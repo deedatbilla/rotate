@@ -45,6 +45,7 @@ export default function Home() {
                   color: "#5E6DFA",
                   borderBottomColor: "#5E6DFA",
                   fontWeight: "bold",
+                  padding: "0px",
                 }}
               >
                 Account
@@ -54,6 +55,7 @@ export default function Home() {
                   color: "#5E6DFA",
                   borderBottomColor: "#5E6DFA",
                   fontWeight: "bold",
+                  padding: "0px",
                 }}
               >
                 User management
