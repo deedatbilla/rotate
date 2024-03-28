@@ -1,95 +1,54 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-
+"use client";
+import Header from "@/components/Header";
+import AccountTab from "@/components/tabs/AccountTab";
+import UserManagementTab from "@/components/tabs/UserManagementTab";
+import { useAuth } from "@/context/authContext";
+import { Box, Text } from "@chakra-ui/react";
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+import { useEffect } from "react";
 export default function Home() {
+  const { login, user, handleAuthCallback, accessToken } = useAuth();
+  const urlParams = new URLSearchParams(window.location.search);
+  const code = urlParams.get("code");
+
+  useEffect(() => {
+    if (!user && !code && !accessToken) {
+      login("http://localhost:3000");
+    }
+  }, []);
+
+  useEffect(() => {
+    if (code) {
+      handleAuthCallback(code);
+    }
+  }, [code]);
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <Box bg="#FBFBFC" height={"100vh"} overflowY={"scroll"}>
+      <Header />
+      <Box mx={"auto"} maxW={"1100px"} py={10} px={4}>
+        <Text fontSize={"28px"} fontWeight={"bold"}>
+          Settings
+        </Text>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+        <Box mt={5}>
+          <Tabs>
+            <TabList>
+              <Tab>Account</Tab>
+              <Tab>User management</Tab>
+            </TabList>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+            <TabPanels mt={5}>
+              <TabPanel>
+                <AccountTab />
+              </TabPanel>
+              <TabPanel>
+                <UserManagementTab />
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
+        </Box>
+      </Box>
+    </Box>
   );
 }
