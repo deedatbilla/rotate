@@ -10,7 +10,10 @@ function Header() {
       display="flex"
       justifyContent="space-between"
       alignItems="center"
+      position={"sticky"}
+      top={0}
       p={4}
+      zIndex={100}
       bg={"white"}
     >
       <Logo width={150} />

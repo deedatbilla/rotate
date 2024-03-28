@@ -180,10 +180,10 @@ function AccountTab() {
               onClick={() => fileRef.current?.click()}
               border="1px solid #5E6DFA4D"
               borderRadius={"8px"}
-              p={5}
+              p={4}
               display={"flex"}
               alignItems={"center"}
-              gap={6}
+              gap={5}
             >
               <Box position={"relative"}>
                 <Avatar

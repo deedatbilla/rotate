@@ -6,16 +6,17 @@ import { useAuth } from "@/context/authContext";
 import { Box, Text } from "@chakra-ui/react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import { useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 export default function Home() {
+  const searchParams = useSearchParams();
+  const code = searchParams.get("code");
   const { login, user, handleAuthCallback, accessToken } = useAuth();
-  const urlParams = new URLSearchParams(window.location.search);
-  const code = urlParams.get("code");
 
   useEffect(() => {
     if (!user && !code && !accessToken) {
       login("http://localhost:3000");
     }
-  }, []);
+  }, [user, code, accessToken]);
 
   useEffect(() => {
     if (code) {
@@ -24,7 +25,12 @@ export default function Home() {
   }, [code]);
 
   return (
-    <Box bg="#FBFBFC" height={"100vh"} overflowY={"scroll"}>
+    <Box
+      bg="#FBFBFC"
+      height={"100vh"}
+      overflowY={"scroll"}
+      position={"relative"}
+    >
       <Header />
       <Box mx={"auto"} maxW={"1100px"} py={10} px={4}>
         <Text fontSize={"28px"} fontWeight={"bold"}>
