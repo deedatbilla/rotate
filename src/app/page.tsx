@@ -7,7 +7,6 @@ import { Box, Text } from "@chakra-ui/react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import { Suspense } from "react";
 export default function Home() {
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
@@ -26,38 +25,52 @@ export default function Home() {
   }, [code]);
 
   return (
-    <Suspense>
-      <Box
-        bg="#FBFBFC"
-        height={"100vh"}
-        overflowY={"scroll"}
-        position={"relative"}
-      >
-        <Header />
-        <Box mx={"auto"} maxW={"1100px"} py={10} px={4}>
-          <Text fontSize={"28px"} fontWeight={"bold"}>
-            Settings
-          </Text>
+    <Box
+      bg="#FBFBFC"
+      height={"100vh"}
+      // overflowY={"scroll"}
+      position={"relative"}
+    >
+      <Header />
+      <Box mx={"auto"} maxW={"1100px"} py={10} px={4}>
+        <Text fontSize={"28px"} fontWeight={"bold"}>
+          Settings
+        </Text>
 
-          <Box mt={5}>
-            <Tabs>
-              <TabList>
-                <Tab>Account</Tab>
-                <Tab>User management</Tab>
-              </TabList>
+        <Box mt={5}>
+          <Tabs>
+            <TabList>
+              <Tab
+                _selected={{
+                  color: "#5E6DFA",
+                  borderBottomColor: "#5E6DFA",
+                  fontWeight: "bold",
+                }}
+              >
+                Account
+              </Tab>
+              <Tab
+                _selected={{
+                  color: "#5E6DFA",
+                  borderBottomColor: "#5E6DFA",
+                  fontWeight: "bold",
+                }}
+              >
+                User management
+              </Tab>
+            </TabList>
 
-              <TabPanels mt={5}>
-                <TabPanel>
-                  <AccountTab />
-                </TabPanel>
-                <TabPanel>
-                  <UserManagementTab />
-                </TabPanel>
-              </TabPanels>
-            </Tabs>
-          </Box>
+            <TabPanels mt={7}>
+              <TabPanel p={0}>
+                <AccountTab />
+              </TabPanel>
+              <TabPanel p={0}>
+                <UserManagementTab />
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
         </Box>
       </Box>
-    </Suspense>
+    </Box>
   );
 }

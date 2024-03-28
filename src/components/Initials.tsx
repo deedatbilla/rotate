@@ -8,8 +8,8 @@ function Initials({ name }: { name: string }) {
     .join("");
   return (
     <Box
-      height={"30px"}
-      width={"30px"}
+      height={"35px"}
+      width={"35px"}
       bg="#F6F7FB"
       borderRadius={"100%"}
       display={"flex"}

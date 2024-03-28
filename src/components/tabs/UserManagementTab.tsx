@@ -10,11 +10,13 @@ import {
   Box,
   Text,
   Avatar,
+  Image,
 } from "@chakra-ui/react";
 import React, { use, useEffect, useState } from "react";
 import { BASE_URL, useAuth } from "@/context/authContext";
 import axios from "axios";
 import Initials from "../Initials";
+import { UsersIcon } from "../../../public/icons";
 
 interface User {
   role: string;
@@ -84,9 +86,24 @@ function UserManagementTab() {
         <Table variant="simple">
           <Thead>
             <Tr>
-              <Th>NAME</Th>
-              <Th>ROLE</Th>
-              <Th>LAST ACTIVE </Th>
+              <Th>
+                <Box display={"flex"} alignItems={"center"} gap={2}>
+                  <Image src={"/users.png"} width={8} height={8} />
+                  <Text fontWeight={"400"} fontSize={"12px"}>
+                    NAME
+                  </Text>
+                </Box>
+              </Th>
+              <Th>
+                <Text fontWeight={"400"} fontSize={"12px"}>
+                  ROLE
+                </Text>
+              </Th>
+              <Th>
+                <Text fontWeight={"400"} fontSize={"12px"}>
+                  LAST ACTIVE
+                </Text>
+              </Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -115,7 +132,6 @@ function UserManagementTab() {
                   </Text>
                 </Td>
                 <Td>
-                  {" "}
                   <Text color={"#5D5F6D"} fontSize={"14px"} fontWeight={"400"}>
                     {timeAgo(user.lastActive)}
                   </Text>

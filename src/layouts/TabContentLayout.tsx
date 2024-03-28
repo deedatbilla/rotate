@@ -30,7 +30,7 @@ function TabContentLayout({
           <CircularProgress size="30px" isIndeterminate color="green.300" />
         )}
       </Box>
-      <Divider color={"#AEADBE"} mt={3} />
+      <Divider borderColor={"#AEADBE"} my={3} />
       {children}
     </Box>
   );
