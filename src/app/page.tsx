@@ -25,14 +25,9 @@ export default function Home() {
   }, [code]);
 
   return (
-    <Box
-      bg="#FBFBFC"
-      height={"100vh"}
-      // overflowY={"scroll"}
-      position={"relative"}
-    >
+    <Box bg="#FBFBFC" height={"100vh"}   overflowY={"scroll"} position={"relative"}>
       <Header />
-      <Box mx={"auto"} maxW={"1100px"} py={10} px={4}>
+      <Box overflowY={"hidden"} mx={"auto"} maxW={"1100px"} py={10} px={4}>
         <Text fontSize={"28px"} fontWeight={"bold"}>
           Settings
         </Text>
