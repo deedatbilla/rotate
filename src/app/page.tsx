@@ -14,7 +14,7 @@ export default function Home() {
 
   useEffect(() => {
     if (!user && !code && !accessToken) {
-      login("http://localhost:3000");
+      login(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000");
     }
   }, [user, code, accessToken]);
 
