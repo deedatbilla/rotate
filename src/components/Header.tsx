@@ -12,8 +12,7 @@ function Header() {
       alignItems="center"
       position={"sticky"}
       top={0}
-      px={5}
-      py={6}
+      p={5}
       zIndex={100}
       bg={"white"}
     >
