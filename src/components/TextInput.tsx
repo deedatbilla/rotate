@@ -23,7 +23,7 @@ const TextInput: React.FC<TextInputProps> = ({
   return (
     <Box>
       {label && (
-        <Text  fontSize={"13px"} fontWeight={"400"}>
+        <Text color={"#5D5F6D"} fontSize={"13px"} fontWeight={"400"}>
           {label}
         </Text>
       )}
@@ -36,6 +36,7 @@ const TextInput: React.FC<TextInputProps> = ({
         required={required}
         type={type}
         fontSize={"12px"}
+        color={"#292B34"}
         bg={"#FCFCFE"}
         border={"1px solid #5E6DFA1A"}
         borderRadius={"8px"}

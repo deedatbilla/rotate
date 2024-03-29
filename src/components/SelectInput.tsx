@@ -23,12 +23,12 @@ const SelectInput: React.FC<SelectInputProps> = ({
   placeholder,
   options,
   name,
-  required
+  required,
 }) => {
   return (
     <Box>
       {label && (
-        <Text fontSize={"13px"} fontWeight={"400"}>
+        <Text color={"#5D5F6D"} fontSize={"13px"} fontWeight={"400"}>
           {label}
         </Text>
       )}
@@ -41,8 +41,9 @@ const SelectInput: React.FC<SelectInputProps> = ({
         value={value}
         bg={"#FCFCFE"}
         sx={{
-          paddingLeft:"24px"
+          paddingLeft: "24px",
         }}
+        color={"#292B34"}
         border={"1px solid #5E6DFA1A"}
         borderRadius={"8px"}
         placeholder={placeholder}

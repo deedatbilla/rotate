@@ -191,7 +191,7 @@ function AccountTab() {
             ]}
           />
           <Box>
-            <Text fontSize={"13px"} fontWeight={"400"}>
+            <Text color={"#5D5F6D"} fontSize={"13px"} fontWeight={"400"}>
               Company Logo
             </Text>
             <input
