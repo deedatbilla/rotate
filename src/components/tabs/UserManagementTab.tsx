@@ -86,9 +86,19 @@ function UserManagementTab() {
         <Table variant="simple">
           <Thead>
             <Tr>
-              <Th>
-                <Box display={"flex"} alignItems={"center"} gap={2}>
-                  <Image src={"/users.png"} width={8} height={8} />
+              <Th px={0}>
+                <Box display={"flex"} alignItems={"center"} gap={4}>
+                  <Box
+                    height={"30px"}
+                    width={"30px"}
+                    alignItems={"center"}
+                    justifyContent={"center"}
+                    display={"flex"}
+                    bg={"#F6F7FB"}
+                    borderRadius={"50%"}
+                  >
+                    <UsersIcon width={"13.87px"} height="13.87px" />
+                  </Box>
                   <Text fontWeight={"400"} fontSize={"12px"}>
                     NAME
                   </Text>
@@ -109,7 +119,7 @@ function UserManagementTab() {
           <Tbody>
             {users.map((user, idx) => (
               <Tr key={idx}>
-                <Td>
+                <Td px={0} py={6}>
                   <Box display={"flex"} alignItems={"center"} gap={3}>
                     <Initials name={user.name} />
                     <Box>

@@ -2,20 +2,21 @@ import { Avatar, Box, Text } from "@chakra-ui/react";
 import React from "react";
 import { Logo } from "../../public/icons";
 import { useAuth } from "@/context/authContext";
+import Image from "next/image";
 
 function Header() {
   const { user, logout } = useAuth();
   return (
-    <Box position={"sticky"} top={0} bg={"white"} p={5}>
+    <Box bg={"white"} p={5}>
       <Box
         display="flex"
         justifyContent="space-between"
         alignItems="center"
-        maxW={"1200px"}
+        maxW={"75.25rem"}
         mx={"auto"}
         zIndex={100}
       >
-        <Logo width={150} />
+       <Image src={"/logo.png"} alt="logo" width={150} height={27.69} />
         {user && (
           <Box display={"flex"} alignItems={"center"} gap={3}>
             <Box>

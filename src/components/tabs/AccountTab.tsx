@@ -1,5 +1,14 @@
-import { Box, Divider, Text, Image, Button, Avatar } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import {
+  Box,
+  Divider,
+  Text,
+  Image,
+  Button,
+  Avatar,
+  Alert,
+  AlertIcon,
+} from "@chakra-ui/react";
+import React, { use, useEffect, useState } from "react";
 import TextInput from "../TextInput";
 import SelectInput from "../SelectInput";
 import axios from "axios";
@@ -10,6 +19,7 @@ import { useS3Upload } from "next-s3-upload";
 
 function AccountTab() {
   const fileRef = React.useRef<HTMLInputElement>(null);
+  const [show, setShow] = useState(false);
   const { accessToken, user } = useAuth();
   let { uploadToS3 } = useS3Upload();
   const [saving, setSaving] = useState(false);
@@ -69,7 +79,7 @@ function AccountTab() {
       );
 
       setSaving(false);
-      alert("Account updated successfully");
+      setShow(true);
     } catch (error) {
       alert("Error updating Account");
       console.log(error);
@@ -100,15 +110,30 @@ function AccountTab() {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    if (show) {
+      setTimeout(() => {
+        setShow(false);
+      }, 1000);
+    }
+  }, [show]);
+
   return (
     <TabContentLayout loading={loading} title="Account">
+      {show && (
+        <Alert status="success" variant="subtle">
+          <AlertIcon />
+          Account Successfully updated
+        </Alert>
+      )}
       <form onSubmit={handleSubmit}>
         <Box
-          maxW={"400px"}
+          maxW={"466px"}
           mt={5}
           display={"flex"}
           flexDirection={"column"}
-          gap={4}
+          gap={5}
         >
           <TextInput
             required
@@ -166,7 +191,7 @@ function AccountTab() {
             ]}
           />
           <Box>
-            <Text ml={2} fontSize={"13px"} fontWeight={"400"}>
+            <Text fontSize={"13px"} fontWeight={"400"}>
               Company Logo
             </Text>
             <input
@@ -188,7 +213,7 @@ function AccountTab() {
               <Box position={"relative"}>
                 <Avatar
                   bg={"#F6F7FB"}
-                  border="1px solid #5E6DFA4D"
+                  border="1px solid #5E6DFA"
                   width={"64px"}
                   height={"64px"}
                   borderRadius={"100%"}

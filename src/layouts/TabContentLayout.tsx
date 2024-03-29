@@ -15,7 +15,7 @@ function TabContentLayout({
       borderRadius={"24px"}
       px={8}
       pb={12}
-      pt={6}
+      pt={4}
       border={"1px solid #CACEE133"}
     >
       <Box
@@ -23,15 +23,19 @@ function TabContentLayout({
         alignItems={"center"}
         justifyContent={"space-between"}
       >
-        <Text fontWeight={"500"} fontSize={"20px"}>
+        <Text
+          fontFamily={"AvenirNextCyr-Medium"}
+          fontWeight={"500"}
+          fontSize={"20px"}
+        >
           {title}
         </Text>
         {loading && (
           <CircularProgress size="30px" isIndeterminate color="green.300" />
         )}
       </Box>
-      <Divider borderColor={"#AEADBE"} my={3} />
-      {children}
+      <Divider opacity={0.3} borderColor={"#AEADBE"} mt={2} />
+      <Box mt={7}>{children}</Box>
     </Box>
   );
 }

@@ -14,8 +14,6 @@ type AuthContextType = {
   login: (redirectUri: string) => void;
   logout: () => void;
   handleAuthCallback: (code: string) => void;
-  
-  
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -43,7 +41,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
     fetchUser();
   }, []);
-
   const verifyUser = async (token: string) => {
     const verifyResponse = await axios.post<User>(
       `https://api.stg.withrotate.com/api/auth/verify`,

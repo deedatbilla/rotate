@@ -25,49 +25,57 @@ export default function Home() {
   }, [code]);
 
   return (
-    <Box bg="#FBFBFC" height={"100vh"}   overflowY={"scroll"} position={"relative"}>
+    <Box
+      bg="#FBFBFC"
+      height={"100vh"}
+      overflowY={"scroll"}
+     
+    >
       <Header />
-      <Box overflowY={"hidden"} mx={"auto"} maxW={"1100px"} py={10} px={4}>
-        <Text fontSize={"28px"} fontWeight={"bold"}>
-          Settings
-        </Text>
+      {user && accessToken && (
+        <Box overflowY={"hidden"} mx={"auto"} maxW={"64.188rem"} py={10} px={4}>
+          <Text fontSize={"28px"} fontFamily={"AvenirNextCyr-Bold"} fontWeight={"bold"}>
+            Settings
+          </Text>
 
-        <Box mt={5}>
-          <Tabs>
-            <TabList>
-              <Tab
-                _selected={{
-                  color: "#5E6DFA",
-                  borderBottomColor: "#5E6DFA",
-                  fontWeight: "bold",
-                  padding: "0px",
-                }}
-              >
-                Account
-              </Tab>
-              <Tab
-                _selected={{
-                  color: "#5E6DFA",
-                  borderBottomColor: "#5E6DFA",
-                  fontWeight: "bold",
-                  padding: "0px",
-                }}
-              >
-                User management
-              </Tab>
-            </TabList>
+          <Box mt={7}>
+            <Tabs>
+              <TabList borderBottomWidth={1}  gap={4}>
+                <Tab
+                  _selected={{
+                    color: "#5E6DFA",
+                    borderBottomColor: "#5E6DFA",
+                    fontWeight: "bold",
+                    padding: "0px",
+                  }}
+                  pl={0}
+                >
+                  Account
+                </Tab>
+                <Tab
+                  _selected={{
+                    color: "#5E6DFA",
+                    borderBottomColor: "#5E6DFA",
+                    fontWeight: "bold",
+                    padding: "0px",
+                  }}
+                >
+                  User management
+                </Tab>
+              </TabList>
 
-            <TabPanels mt={7}>
-              <TabPanel p={0}>
-                <AccountTab />
-              </TabPanel>
-              <TabPanel p={0}>
-                <UserManagementTab />
-              </TabPanel>
-            </TabPanels>
-          </Tabs>
+              <TabPanels mt={8}>
+                <TabPanel p={0}>
+                  <AccountTab />
+                </TabPanel>
+                <TabPanel p={0}>
+                  <UserManagementTab />
+                </TabPanel>
+              </TabPanels>
+            </Tabs>
+          </Box>
         </Box>
-      </Box>
+      )}
     </Box>
   );
 }
